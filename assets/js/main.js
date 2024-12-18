@@ -33,10 +33,7 @@ const renderTasks = () => {
     <button class=delete-button onClick='deleteTask(${task.id})'>Eliminar</button>
   
   </li> `).join("");
-
-
 }
-
 
 const toggleTaskCompleted = (id) => {
   const task = tasks.find((task) => task.id === id);
