@@ -3,7 +3,24 @@ const input = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list");
 
 // Array para almacenar las tareas
-let tasks = [];
+let tasks = [{
+  id: 1,
+  text: "Aprender JavaScript",
+  completed: false,
+}
+,{
+  id: 2,
+  text: "Aprender CSS",
+  completed: true,
+}
+,{
+  id: 3,
+  text: "Aprender HTML",
+  completed: false,
+}
+];
+
+// Renderizar las tareas al cargar la página
 
 
 button.addEventListener("click",  ()=> {
@@ -13,7 +30,6 @@ button.addEventListener("click",  ()=> {
 const addTodo = () => {
   if (input.value.trim() === "") return;
 
-  // Añadir la nueva tarea al array
   tasks.push({
     id: Date.now(),
     text: input.value,
@@ -33,6 +49,13 @@ const renderTasks = () => {
     <button class=delete-button onClick='deleteTask(${task.id})'>Eliminar</button>
   
   </li> `).join("");
+
+    // Actualizar los conteos
+    const totalTasks = tasks.length;
+    const completedTasks = tasks.filter(task => task.completed).length;
+  
+    document.getElementById('total-tasks').innerHTML = totalTasks;
+    document.getElementById('completed-tasks').innerHTML = completedTasks;
 }
 
 const toggleTaskCompleted = (id) => {
@@ -46,3 +69,4 @@ const deleteTask = (id) => {
   tasks.splice(index, 1);
   renderTasks();
 }
+renderTasks();
