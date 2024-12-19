@@ -31,7 +31,7 @@ const addTodo = () => {
   if (input.value.trim() === "") return;
 
   tasks.push({
-    id: tasks.length + 1,
+    id: Date.now(),
     text: input.value,
     completed: false,
   });
@@ -49,7 +49,6 @@ const renderTasks = () => {
     <input type="checkbox" ${
       task.completed ? "checked" : ""
     } onchange="toggleTaskCompleted(${task.id})">&nbsp
-    <label>${task.id} </label>&nbsp
     <span  style="text-decoration: ${
       task.completed ? "line-through" : "none"
     };">${task.text}</span>
