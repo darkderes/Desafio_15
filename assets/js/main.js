@@ -21,8 +21,6 @@ let tasks = [
   },
 ];
 
-// Renderizar las tareas al cargar la página
-
 button.addEventListener("click", () => {
   addTodo();
 });
