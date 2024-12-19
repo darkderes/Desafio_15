@@ -31,7 +31,7 @@ const addTodo = () => {
   if (input.value.trim() === "") return;
 
   tasks.push({
-    id: Date.now(),
+    id: getLastIndex() + 1,
     text: input.value,
     completed: false,
   });
@@ -49,6 +49,7 @@ const renderTasks = () => {
     <input type="checkbox" ${
       task.completed ? "checked" : ""
     } onchange="toggleTaskCompleted(${task.id})">&nbsp
+    <label>${task.id}</label>&nbsp
     <span  style="text-decoration: ${
       task.completed ? "line-through" : "none"
     };">${task.text}</span>
@@ -78,5 +79,10 @@ const deleteTask = (id) => {
   const index = tasks.findIndex((task) => task.id === id);
   tasks.splice(index, 1);
   renderTasks();
+};
+//funcion que em devuelva el ultimo index ingresado
+const getLastIndex = () => {
+  if (tasks.length === 0) return 0;
+  return tasks[tasks.length - 1].id;
 };
 renderTasks();
